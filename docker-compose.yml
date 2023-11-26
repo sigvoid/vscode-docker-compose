@@ -1,0 +1,14 @@
+version: '3'
+services:
+  code-server:
+    image: codercom/code-server:latest
+    container_name: code-server
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - "$HOME/.local:/${USER}/.local"
+      - "$HOME/.config:/${USER}/.config"
+      - "$PWD/project:/home/coder/project"
+    user: "${UID_GID}"
+    environment:
+      - "DOCKER_USER=${USER}"
